@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectg17.models.*
 
-
 class ItineraryAdapter(private val itineraryList: List<Itinerary>) :
     RecyclerView.Adapter<ItineraryAdapter.ItineraryViewHolder>() {
 
@@ -26,9 +25,9 @@ class ItineraryAdapter(private val itineraryList: List<Itinerary>) :
     override fun onBindViewHolder(holder: ItineraryViewHolder, position: Int) {
         val currentItem = itineraryList[position]
 
-        holder.parkNameTextView.text = currentItem.name
-        holder.dateTextView.text = "Date: ${currentItem.date}"
-        holder.notesTextView.text = "Notes: ${currentItem.notes}"
+//        holder.parkNameTextView.text = currentItem.name
+//        holder.dateTextView.text = "Date: ${currentItem.date}"
+//        holder.notesTextView.text = "Notes: ${currentItem.notes}"
     }
 
     override fun getItemCount() = itineraryList.size

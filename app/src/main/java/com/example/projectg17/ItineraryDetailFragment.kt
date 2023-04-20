@@ -1,12 +1,10 @@
 package com.example.projectg17
 
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import com.example.projectg17.databinding.FragmentItineraryDetailBinding
 
 class ItineraryDetailFragment : Fragment(R.layout.fragment_itinerary) {
