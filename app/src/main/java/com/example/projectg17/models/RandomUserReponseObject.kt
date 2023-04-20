@@ -54,3 +54,4 @@ data class Itinerary(
     val notes: String,
     val id: String
 ) {}
+

@@ -77,7 +77,6 @@ class ItineraryFragment : Fragment(R.layout.fragment_itinerary) {
                 itineraryList[i].notes,
             )
             findNavController().navigate(action)
-//            findNavController().navigate(action)
         }
     }
 
@@ -85,5 +84,9 @@ class ItineraryFragment : Fragment(R.layout.fragment_itinerary) {
         super.onCreateOptionsMenu(menu, inflater)
         val inflater: MenuInflater = inflater
         inflater.inflate(R.menu.options_menu, menu)
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
