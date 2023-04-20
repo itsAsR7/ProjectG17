@@ -4,8 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF9C4"
+    android:background="@color/grey"
     tools:context=".FindParkFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Spinner
+            android:id="@+id/stateSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:foregroundTint="#FFEB3B"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/btFindPark"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="FIND PARKS"
+            android:layout_weight="0"
+            >
+        </Button>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_map"

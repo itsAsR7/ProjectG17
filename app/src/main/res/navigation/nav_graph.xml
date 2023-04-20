@@ -20,8 +20,20 @@
         android:label="fragment_view_park_detail"
         tools:layout="@layout/fragment_view_park_detail" >
         <argument
-            android:name="userId"
-            app:argType="integer" />
+            android:name="parkName"
+            app:argType="string" />
+        <argument
+            android:name="parkAddress"
+            app:argType="string" />
+        <argument
+            android:name="parkURL"
+            app:argType="string" />
+        <argument
+            android:name="parkDescription"
+            app:argType="string" />
+        <argument
+            android:name="parkImage"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/itineraryFragment"

@@ -1,21 +1,30 @@
 package com.example.projectg17.models
 
 // Response from API
-data class RandomUserReponseObject(
-    val results:List<PersonData>
+data class ParkByStateReponseObject(
+    val data:List<ParkData>
 ) {}
 
 // Objects for results array
-data class PersonData(
-    val name:NameObj,
-    val location: LocationObj,
-    val picture: PictureObj
+data class ParkData(
+    val fullName:String,
+    val addresses:List<AddressObj>,
+    val description: String,
+    val url: String,
+    val latitude:String,
+    val longitude: String,
+    val images: List<ImagesObj>
 )
 {}
 // objects for the Name
-data class NameObj(
-    val first:String,
-    val last:String
+data class ImagesObj(
+    val url:String,
+) {}
+
+data class AddressObj(
+    val line2:String,
+    val city:String,
+    val stateCode:String,
 ) {}
 
 // Objects for the Location
@@ -32,4 +41,7 @@ data class PictureObj(
     val thumbnail:String
 ) {}
 
-
+data class ParksObj(
+    val name:String,
+    val designation:String
+) {}

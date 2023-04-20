@@ -7,11 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
-    // TODO: Update this to: https://reqres.in/
-    // private val BASE_URL:String = "https://reqres.in/"
-
-    // TODO: private val BASE_URL:String = "https://randomuser.me/"
-        private val BASE_URL:String = "https://randomuser.me/"
+    private val BASE_URL:String = "https://developer.nps.gov/"
 
     // setup a client with logging
     private val httpClient = OkHttpClient.Builder()
