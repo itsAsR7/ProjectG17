@@ -5,7 +5,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
-class ScreenBFragment : Fragment(R.layout.fragment_screen_b) {
+class ItineraryFragment : Fragment(R.layout.fragment_itinerary) {
       override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

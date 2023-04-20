@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/screenAFragment"
-        android:title="Screen A"></item>
+        android:title="Find A Park"></item>
     <item
         android:id="@+id/screenBFragment"
-        android:title="Screen B"></item>
+        android:title="My Itinerary"></item>
 </menu>

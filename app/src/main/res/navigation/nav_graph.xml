@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/screenAFragment"
-        android:name="com.example.projectg17.ScreenAFragment"
+        android:name="com.example.projectg17.FindParkFragment"
         android:label="fragment_screen_a"
-        tools:layout="@layout/fragment_screen_a" />
+        tools:layout="@layout/fragment_find_park" />
     <fragment
         android:id="@+id/screenBFragment"
-        android:name="com.example.projectg17.ScreenBFragment"
+        android:name="com.example.projectg17.ItineraryFragment"
         android:label="fragment_screen_b"
-        tools:layout="@layout/fragment_screen_b" />
+        tools:layout="@layout/fragment_itinerary" />
 </navigation>
