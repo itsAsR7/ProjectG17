@@ -4,32 +4,73 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.projectg17.models.*
 
-class ItineraryFragment : Fragment(R.layout.fragment_itinerary) {
-      override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Required for displaing the menu
-        // You can ignore the deprecation warnings
-        // But if the deprecation warnings bother you, you can use this code to get rid of the deprecation warnings:
-        // https://stackoverflow.com/a/71965674
-        return super.onCreateView(inflater, container, savedInstanceState)
+import com.example.projectg17.databinding.FragmentItineraryBinding
+import com.google.firebase.firestore.FirebaseFirestore
+
+class ItineraryFragment : Fragment() {
+
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var itineraryAdapter: ItineraryAdapter
+
+    private var _binding: FragmentItineraryBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentItineraryBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    // 1. Add the onCreateOptionsMenu
-    // - Notice the function signature is slightly different for a Fragment vs Activity
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Initialize the Firestore instance
+        firestore = FirebaseFirestore.getInstance()
+
+        // Create the adapter for the RecyclerView
+        itineraryAdapter = ItineraryAdapter(emptyList())
+
+        // Set up the RecyclerView
+        binding.itineraryList.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = itineraryAdapter
+            addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+        }
+
+        // Query the "itinerary" collection in Firestore
+        firestore.collection("itinerary")
+            .get()
+            .addOnSuccessListener { documents ->
+                // Create a list of Itinerary objects from the documents
+                val itineraryList = mutableListOf<Itinerary>()
+                for (document in documents) {
+                    val parkName = document.getString("name") ?: "No  Park"
+                    val date = document.getString("date") ?: ""
+                    val notes = document.getString("notes") ?: ""
+                    val id = document.id
+                    if (parkName != null) {
+                        val itinerary = Itinerary(parkName, date, notes, id)
+                        itineraryList.add(itinerary)
+                    }
+                }
+                // Update the adapter with the new list of Itinerary objects
+                itineraryAdapter.updateItineraryList(itineraryList)
+            }
+            .addOnFailureListener { exception ->
+                // Handle errors
+                Toast.makeText(requireContext(), "Failed to retrieve itinerary: $exception", Toast.LENGTH_SHORT).show()
+            }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        val inflater: MenuInflater = inflater
         inflater.inflate(R.menu.options_menu, menu)
     }
 
-    // 2. Add the onOptionsItemSelected function
-    // - The function signature is the same in a Fragment as in an Activity
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle item selection
         when (item.itemId) {
             R.id.mi_settings -> {
                 val toast = Toast.makeText(requireContext(), "Settings Menu clicked!", Toast.LENGTH_SHORT)
@@ -52,4 +93,8 @@ class ItineraryFragment : Fragment(R.layout.fragment_itinerary) {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

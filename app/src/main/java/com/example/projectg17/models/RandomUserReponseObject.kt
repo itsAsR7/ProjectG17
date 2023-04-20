@@ -45,3 +45,10 @@ data class ParksObj(
     val name:String,
     val designation:String
 ) {}
+
+data class Itinerary(
+    val name: String,
+    val date: String,
+    val notes: String,
+    val id: String
+) {}

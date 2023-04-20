@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#84FFFF"
-    tools:context=".ItineraryFragment">
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="28sp"
-        android:text="Screen B (Fragment)" />
+        android:text="My Itinerary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="16dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itinerary_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/clear_itinerary_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clear Itinerary"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:padding="16dp"/>
 
 </LinearLayout>
