@@ -3,16 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/screenAFragment">
+    app:startDestination="@id/findParkFragment">
 
     <fragment
-        android:id="@+id/screenAFragment"
+        android:id="@+id/findParkFragment"
         android:name="com.example.projectg17.FindParkFragment"
-        android:label="fragment_screen_a"
-        tools:layout="@layout/fragment_find_park" />
+        android:label="fragment_find_park"
+        tools:layout="@layout/fragment_find_park" >
+        <action
+            android:id="@+id/action_findParkFragment_to_detailParkFragment"
+            app:destination="@id/detailParkFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/screenBFragment"
+        android:id="@+id/detailParkFragment"
+        android:name="com.example.projectg17.ViewParkDetailFragment"
+        android:label="fragment_view_park_detail"
+        tools:layout="@layout/fragment_view_park_detail" >
+        <argument
+            android:name="userId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/itineraryFragment"
         android:name="com.example.projectg17.ItineraryFragment"
-        android:label="fragment_screen_b"
+        android:label="fragment_itinerary"
         tools:layout="@layout/fragment_itinerary" />
 </navigation>
