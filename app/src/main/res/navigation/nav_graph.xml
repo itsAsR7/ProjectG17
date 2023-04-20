@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/screenAFragment">
+
+    <fragment
+        android:id="@+id/screenAFragment"
+        android:name="com.example.projectg17.ScreenAFragment"
+        android:label="fragment_screen_a"
+        tools:layout="@layout/fragment_screen_a" />
+    <fragment
+        android:id="@+id/screenBFragment"
+        android:name="com.example.projectg17.ScreenBFragment"
+        android:label="fragment_screen_b"
+        tools:layout="@layout/fragment_screen_b" />
+</navigation>
