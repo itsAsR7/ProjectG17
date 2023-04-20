@@ -7,6 +7,7 @@ data class ParkByStateReponseObject(
 
 // Objects for results array
 data class ParkData(
+    var id:String,
     val fullName:String,
     val addresses:List<AddressObj>,
     val description: String,
@@ -44,4 +45,12 @@ data class PictureObj(
 data class ParksObj(
     val name:String,
     val designation:String
+) {}
+
+data class Itinerary(
+    val name: String,
+    val address: String,
+    val date: String,
+    val notes: String,
+    val id: String
 ) {}

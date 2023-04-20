@@ -21,82 +21,76 @@
             <!-- Content here -->
 
             <TextView
-                android:id="@+id/tvParkName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="Denali"
-                android:layout_marginBottom="10dp"
-                />
-
-            <ImageView
-                android:id="@+id/ivPhoto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/ic_launcher_background"
+                android:text="My Itinerary"
+                android:layout_marginBottom="20dp"
                 />
 
             <TextView
+                android:id="@+id/tvParkName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="Address and Website"
+                android:text="Name"
                 />
 
             <TextView
                 android:id="@+id/tvAdress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/dark_grey"
                 android:textStyle="normal"
-                android:text="Address" />
-
-            <TextView
-                android:id="@+id/tvWebsite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="normal"
-                android:textSize="16sp"
-                android:text="abc"
-                android:layout_marginBottom="20dp"
-                android:autoLink="web"
-                android:clickable="true"
+                android:text="Address"
+                android:layout_marginBottom="30dp"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:text="Trip Date"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="Description"
                 />
 
             <TextView
-                android:id="@+id/tvDescription"
+                android:id="@+id/tvTripDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:textStyle="normal"
-                android:textColor="@color/black"
-                android:text="afaf"
-                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_grey"
+                android:text=""
+                android:layout_marginBottom="30dp"
                 />
-            <Button
-                android:id="@+id/btAdd"
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:text="Add to Itinerary"
-                >
-            </Button>
+                android:layout_height="wrap_content"
+                android:text="Notes"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/tvNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_grey"
+                android:text="Note"
+                />
+
         </LinearLayout>
     </ScrollView>
 

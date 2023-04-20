@@ -4,14 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#84FFFF"
+    android:background="@color/grey"
     tools:context=".ItineraryFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="My Itineraryview"
         android:textAlignment="center"
         android:textSize="28sp"
-        android:text="Screen B (Fragment)" />
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        >
+    </TextView>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
 
 </LinearLayout>

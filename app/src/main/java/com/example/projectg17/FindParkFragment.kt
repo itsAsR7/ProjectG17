@@ -70,8 +70,14 @@ class FindParkFragment : Fragment(R.layout.fragment_find_park), OnMapReadyCallba
         }
 
         val categorySpinner = view.findViewById<Spinner>(R.id.stateSpinner)
-        val stateName = arrayOf("Alabama", "Alaska", "Arizona", "Arkansas", "California")
-        val stateUSPS = arrayOf("AL", "AK", "AZ", "AR", "CA")
+        val stateName = arrayOf(
+            "Alabama", "Alaska", "Arizona", "Arkansas", "California","Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
+            "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa","Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
+        )
+        val stateUSPS = arrayOf(
+            "AL", "AK", "AZ", "AR", "CA","CO", "CT", "DE", "FL", "GA",
+            "HI", "ID", "IL", "IN", "IA","KS", "KY", "LA", "ME", "MD",
+        )
 
         this.myArrayAdapterSpinner = ArrayAdapter<String>(requireContext(), android.R.layout.select_dialog_item,stateName)
         myArrayAdapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -106,6 +112,7 @@ class FindParkFragment : Fragment(R.layout.fragment_find_park), OnMapReadyCallba
                                 for (currPark:ParkData in parkList) {
                                     if (currPark.fullName == parkname){
                                         val action = FindParkFragmentDirections.actionFindParkFragmentToDetailParkFragment(
+                                            currPark.id,
                                             currPark.fullName,
                                             "${currPark.addresses[0].line2}, ${currPark.addresses[0].city}, ${currPark.addresses[0].stateCode}",
                                             currPark.url,

@@ -20,6 +20,9 @@
         android:label="fragment_view_park_detail"
         tools:layout="@layout/fragment_view_park_detail" >
         <argument
+            android:name="parkID"
+            app:argType="string" />
+        <argument
             android:name="parkName"
             app:argType="string" />
         <argument
@@ -39,5 +42,28 @@
         android:id="@+id/itineraryFragment"
         android:name="com.example.projectg17.ItineraryFragment"
         android:label="fragment_itinerary"
-        tools:layout="@layout/fragment_itinerary" />
+        tools:layout="@layout/fragment_itinerary" >
+        <action
+            android:id="@+id/action_itineraryFragment_to_itineraryDetailFragment"
+            app:destination="@id/itineraryDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itineraryDetailFragment"
+        android:name="com.example.projectg17.ItineraryDetailFragment"
+        android:label="fragment_itinerary_detail"
+        tools:layout="@layout/fragment_itinerary_detail" >
+        <argument
+            android:name="parkName"
+            app:argType="string" />
+        <argument
+            android:name="parkAddress"
+            app:argType="string" />
+        <argument
+            android:name="parkTripDate"
+            app:argType="string" />
+        <argument
+            android:name="parkNote"
+            app:argType="string" />
+    </fragment>
+
 </navigation>
