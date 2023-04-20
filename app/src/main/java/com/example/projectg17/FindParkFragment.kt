@@ -5,23 +5,32 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.projectg17.databinding.FragmentFindParkBinding
+import com.example.projectg17.models.PersonData
+import com.example.projectg17.models.RandomUserReponseObject
+import com.example.projectg17.networking.ApiService
+import com.example.projectg17.networking.RetrofitInstance
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.coroutines.launch
+import retrofit2.Response
+//import retrofit2.Response
+import java.util.Random
 
 class FindParkFragment : Fragment(R.layout.fragment_find_park), OnMapReadyCallback {
 
     private val TAG="SCREEN1"
 
     // binding variables
-//    private var _binding: FindFindParkBinding? = null
+    private var _binding: FragmentFindParkBinding? = null
     private val binding get() = _binding!!
 
     // TODO: data source for adapter
@@ -40,7 +49,7 @@ class FindParkFragment : Fragment(R.layout.fragment_find_park), OnMapReadyCallba
         savedInstanceState: Bundle?
     ): View? {
         // binding
-//        _binding = FragmentScreen1Binding.inflate(inflater, container, false)
+        _binding = FragmentFindParkBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
@@ -64,39 +73,39 @@ class FindParkFragment : Fragment(R.layout.fragment_find_park), OnMapReadyCallba
         }
 
         // TODO: get data from API
-//        lifecycleScope.launch {
-//            var responseFromAPI:RandomUserReponseObject? =
-//                getRandomUsersFromAPI()
-//            if (responseFromAPI == null) {
-//                return@launch
-//            }
-//            Log.d(TAG, "Success: Data retrieved from API")
-//
-//            // TODO: get the data from the array
-//
-//            // 1. Get the 'results' attribute from the RandomUserResponseObject
-//            val personList:List<PersonData> = responseFromAPI.results
-//
-//            // - Loop through the list of people, and get their coordinates
-//            for (currPerson:PersonData in personList) {
-//                Log.d(TAG, "Name: ${currPerson.name.first} ${currPerson.name.last}")
-//
-//                Log.d(TAG, "Lat: ${currPerson.location.coordinates.latitude}")
-//                Log.d(TAG, "Lng: ${currPerson.location.coordinates.longitude}")
-//
-//                val lat:Double = currPerson.location.coordinates.latitude.toDouble()
-//                val lng:Double = currPerson.location.coordinates.longitude.toDouble()
-//
-//                // build a LatLng for the person and save it to an array
-//                userLocations.add(LatLng(lat, lng))
-//            }
-//
-//            Log.d(TAG, "Done with our data, # of coordinates found are: ${userLocations.size}")
-//
-//            for (coord in userLocations) {
-//                mMap.addMarker(MarkerOptions().position(coord).title("Hello"))
-//            }
-//        }
+        lifecycleScope.launch {
+            var responseFromAPI:RandomUserReponseObject? =
+                getRandomUsersFromAPI()
+            if (responseFromAPI == null) {
+                return@launch
+            }
+            Log.d(TAG, "Success: Data retrieved from API")
+
+            // TODO: get the data from the array
+
+            // 1. Get the 'results' attribute from the RandomUserResponseObject
+            val personList:List<PersonData> = responseFromAPI.results
+
+            // - Loop through the list of people, and get their coordinates
+            for (currPerson:PersonData in personList) {
+                Log.d(TAG, "Name: ${currPerson.name.first} ${currPerson.name.last}")
+
+                Log.d(TAG, "Lat: ${currPerson.location.coordinates.latitude}")
+                Log.d(TAG, "Lng: ${currPerson.location.coordinates.longitude}")
+
+                val lat:Double = currPerson.location.coordinates.latitude.toDouble()
+                val lng:Double = currPerson.location.coordinates.longitude.toDouble()
+
+                // build a LatLng for the person and save it to an array
+                userLocations.add(LatLng(lat, lng))
+            }
+
+            Log.d(TAG, "Done with our data, # of coordinates found are: ${userLocations.size}")
+
+            for (coord in userLocations) {
+                mMap.addMarker(MarkerOptions().position(coord).title("Hello"))
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -105,28 +114,28 @@ class FindParkFragment : Fragment(R.layout.fragment_find_park), OnMapReadyCallba
     }
 
     // TODO: helper functions for api
-//    private suspend fun getRandomUsersFromAPI(): RandomUserReponseObject? {
-//        var apiService: ApiService = RetrofitInstance.retrofitService
-//        val response: Response<RandomUserReponseObject> = apiService.getRandomUsers()
-//
-//        if (response.isSuccessful) {
-//            val dataFromAPI = response.body()   /// myresponseobject
-//            if (dataFromAPI == null) {
-//                Log.d("API", "No data from API or some other error")
-//                return null
-//            }
-//
-//            // if you reach this point, then you must have received a response from the api
-//            Log.d(TAG, "Here is the data from the API")
-//            Log.d(TAG, dataFromAPI.toString())
-//            return dataFromAPI
-//        }
-//        else {
-//            // Handle error
-//            Log.d(TAG, "An error occurred")
-//            return null
-//        }
-//    }
+    private suspend fun getRandomUsersFromAPI(): RandomUserReponseObject? {
+        var apiService: ApiService = RetrofitInstance.retrofitService
+        val response: Response<RandomUserReponseObject> = apiService.getRandomUsers()
+
+        if (response.isSuccessful) {
+            val dataFromAPI = response.body()   /// myresponseobject
+            if (dataFromAPI == null) {
+                Log.d("API", "No data from API or some other error")
+                return null
+            }
+
+            // if you reach this point, then you must have received a response from the api
+            Log.d(TAG, "Here is the data from the API")
+            Log.d(TAG, dataFromAPI.toString())
+            return dataFromAPI
+        }
+        else {
+            // Handle error
+            Log.d(TAG, "An error occurred")
+            return null
+        }
+    }
 
 
     // TODO: Google Map callback function
@@ -152,7 +161,6 @@ class FindParkFragment : Fragment(R.layout.fragment_find_park), OnMapReadyCallba
         Log.d(TAG, "+++ Map is finished loading!...")
 
         // after the map is ready, get the markers and output to the screen
-
 
     }
 
