@@ -71,6 +71,7 @@ class ItineraryFragment : Fragment(R.layout.fragment_itinerary) {
         binding.listView.adapter = myArrayAdapter
         binding.listView.setOnItemClickListener { adapterView, view, i, l ->
             val action = ItineraryFragmentDirections.actionItineraryFragmentToItineraryDetailFragment(
+                itineraryList[i].id,
                 itineraryList[i].name,
                 itineraryList[i].address,
                 itineraryList[i].date,

@@ -44,6 +44,8 @@ class ViewParkDetailFragment : Fragment(R.layout.fragment_itinerary) {
 
         firestore = FirebaseFirestore.getInstance()
 
+
+
         val tvParkName = view.findViewById<TextView>(R.id.tvParkName)
         val tvAdress = view.findViewById<TextView>(R.id.tvAdress)
         val tvWebsite = view.findViewById<TextView>(R.id.tvWebsite)
@@ -73,14 +75,7 @@ class ViewParkDetailFragment : Fragment(R.layout.fragment_itinerary) {
             firestore.collection("itinerary").document("itinerary-${args.parkID}")
                 .set(documentData)
                 .await()
-            println("Create successfully")
-
-//            val toast = Toast.makeText(
-//                this,
-//                "Create successfully",
-//                Toast.LENGTH_LONG
-//            )
-//            toast.show()
+            Toast.makeText(activity,"Create Itinerary Successful!",Toast.LENGTH_LONG).show();
         } catch (e: Exception) {
             println("Error creating document: $e")
         }

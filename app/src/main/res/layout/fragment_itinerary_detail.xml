@@ -91,6 +91,14 @@
                 android:text="Note"
                 />
 
+            <Button
+                android:id="@+id/btDelete"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:text="Delete my Itinerary"
+                >
+            </Button>
+
         </LinearLayout>
     </ScrollView>
 

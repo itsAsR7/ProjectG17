@@ -53,6 +53,9 @@
         android:label="fragment_itinerary_detail"
         tools:layout="@layout/fragment_itinerary_detail" >
         <argument
+            android:name="parkID"
+            app:argType="string" />
+        <argument
             android:name="parkName"
             app:argType="string" />
         <argument
